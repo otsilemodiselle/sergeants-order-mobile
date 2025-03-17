@@ -1,5 +1,5 @@
 {
-  "name": "sergeants_orders_mobile",
+  "name": "sergeants_orders_app",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
