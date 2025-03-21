@@ -1,11 +1,13 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import FoodCard from '../components/FoodCard'
 
 const HomeScreen = () => {
   return (
-    <View style={{flex:1, backgroundColor: "gold"}}>
-      <Text>HomeScreen</Text>
-    </View>
+    <SafeAreaView style={{flex:1, backgroundColor:"#121212"}}>
+      <FoodCard/>
+    </SafeAreaView>
   )
 }
 

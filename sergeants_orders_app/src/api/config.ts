@@ -1,6 +1,8 @@
 import axios from "axios";
 import { Alert } from "react-native";
+import { useState } from "react";
 
+const [foodList, setFoodList] = useState([])
 const endpointURL = "https://67dc7d76e00db03c406839c3.mockapi.io/food";
 
 const getListOfFood = async() => {
