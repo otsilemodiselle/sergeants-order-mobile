@@ -45,6 +45,27 @@ export default function App() {
     }
   }
 
+  const body = {
+    description: "Italian style pizza with beef, chicken and pork cuts",
+    dish_name: "Meat Lovers Pizza",
+    dish_image: "https://loremflickr.com/640/480",
+    dish_price: 160,
+    category: "pizza"
+  }
+
+  const createFoodItem = async() => {
+    try{
+      const response = await axios.post(endpointURL,body)
+
+      Alert.alert("Food item created!")
+      getListOfFood()
+    }
+    catch(error)
+    {
+      console.error("Could not delete item", error)
+    }
+  }
+
   const test = () => console.log("button pressed")
 
   return (
@@ -58,6 +79,10 @@ export default function App() {
       <Button 
         title="Delete Food by ID" 
         onPress={deleteFoodByID}
+      />
+      <Button 
+        title="Create Food item" 
+        onPress={createFoodItem}
       />
       <FlatList
         style={styles.list}
