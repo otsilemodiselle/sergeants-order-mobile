@@ -23,9 +23,15 @@ export default function App() {
   }
 
   const getFoodByID = async() => {
-    console.log("function started")
-    const response = await axios.get(endpointURL + "/3")
+    try{
+      console.log("function started")
+      const response = await axios.get(endpointURL + "/3584")
     console.log(JSON.stringify(response.data, null, 3));
+    }
+    catch(error)
+    {
+      console.error("Error fetching food item:", error)
+    }
   }
 
   const test = () => console.log("button pressed")
