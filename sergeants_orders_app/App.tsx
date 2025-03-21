@@ -13,28 +13,33 @@ export default function App() {
     
     try{
       const response = await axios.get(endpointURL)
-      console.log(JSON.stringify(response.data, null,))
+      console.log(JSON.stringify(response.data, null, 3))
       setFoodList(response.data)
     } 
     catch(error)
     {
       console.error("Error fetching food list:", error)
-    }}
+    }
+  }
 
-    console.log("===========================foodList===========================")
-    console.log(foodList)
-    console.log("==============================================================")
-    
+  const getFoodByID = async() => {
+    console.log("function started")
+    const response = await axios.get(endpointURL + "/3")
+    console.log(JSON.stringify(response.data, null, 3));
+  }
+
+  const test = () => console.log("button pressed")
 
   return (
     <View style={styles.container}>
       <Text>Hello World!</Text>
       <StatusBar style="auto"/>
       <Button 
-        title="Get List of Food" 
-        onPress={getListOfFood}
+        title="Get Food by ID" 
+        onPress={getFoodByID}
       />
       <FlatList
+        style={styles.list}
         data={foodList}
         keyExtractor={(item)=>item.id}
         renderItem={({item})=> 
@@ -60,5 +65,8 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems: "center",
     justifyContent: "center"
+  },
+  list: {
+    // marginTop: 500
   }
 })
