@@ -46,23 +46,34 @@ export default function App() {
   }
 
   const body = {
-    description: "Italian style pizza with beef, chicken and pork cuts",
-    dish_name: "Meat Lovers Pizza",
+    description: "Italian style pizza with only vegetables",
+    dish_name: "Vegetarian Pizza",
     dish_image: "https://loremflickr.com/640/480",
-    dish_price: 160,
+    dish_price: 110,
     category: "pizza"
   }
 
   const createFoodItem = async() => {
     try{
       const response = await axios.post(endpointURL,body)
-
       Alert.alert("Food item created!")
       getListOfFood()
     }
     catch(error)
     {
       console.error("Could not delete item", error)
+    }
+  }
+
+  const updateFoodItem = async() => {
+    try{
+      const response = await axios.put(endpointURL+"/32",body)
+      Alert.alert("Food item updated!")
+      getListOfFood()
+    }
+    catch(error)
+    {
+      console.error("Could not edit item", error)
     }
   }
 
@@ -83,6 +94,10 @@ export default function App() {
       <Button 
         title="Create Food item" 
         onPress={createFoodItem}
+      />
+      <Button 
+        title="Update Food item" 
+        onPress={updateFoodItem}
       />
       <FlatList
         style={styles.list}
