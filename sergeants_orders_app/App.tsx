@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, Text, View, StyleSheet, FlatList, Image }from 'react-native';
+import { Button, Text, View, StyleSheet, FlatList, Image, Alert }from 'react-native';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -25,12 +25,23 @@ export default function App() {
   const getFoodByID = async() => {
     try{
       console.log("function started")
-      const response = await axios.get(endpointURL + "/3584")
+      const response = await axios.get(endpointURL + "/4")
     console.log(JSON.stringify(response.data, null, 3));
     }
     catch(error)
     {
       console.error("Error fetching food item:", error)
+    }
+  }
+
+  const deleteFoodByID = async() =>{
+    try{
+      const response = await axios.delete(endpointURL+"/31")
+      Alert.alert("Food item was successfully deleted")
+    }
+    catch(error)
+    {
+      console.error("Could not delete item", error)
     }
   }
 
@@ -43,6 +54,10 @@ export default function App() {
       <Button 
         title="Get Food by ID" 
         onPress={getFoodByID}
+      />
+      <Button 
+        title="Delete Food by ID" 
+        onPress={deleteFoodByID}
       />
       <FlatList
         style={styles.list}
